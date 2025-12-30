@@ -1,13 +1,360 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Haoyang You</title>
+  <title>Haoyang You | CV</title>
+  <meta name="description" content="Haoyang You - Curriculum Vitae / Academic Homepage" />
+  <style>
+    :root{
+      --bg: #0b0c0f;
+      --card: rgba(255,255,255,.06);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --faint: rgba(255,255,255,.55);
+      --border: rgba(255,255,255,.14);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+      --max: 1040px;
+    }
+
+    /* Light-mode fallback */
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg: #f6f7fb;
+        --card: #ffffff;
+        --text: rgba(0,0,0,.92);
+        --muted: rgba(0,0,0,.72);
+        --faint: rgba(0,0,0,.55);
+        --border: rgba(0,0,0,.10);
+        --shadow: 0 10px 25px rgba(0,0,0,.08);
+      }
+    }
+
+    *{ box-sizing: border-box; }
+    body{
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+                   "PingFang SC","Noto Sans CJK SC","Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 48px auto;
+      padding: 0 18px;
+    }
+
+    .topbar{
+      display: flex;
+      gap: 16px;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 18px;
+    }
+
+    .name h1{
+      margin: 0;
+      font-size: 34px;
+      letter-spacing: .2px;
+    }
+    .name .sub{
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .chips{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+      margin-top: 6px;
+    }
+    .chip{
+      border: 1px solid var(--border);
+      background: var(--card);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .grid{
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    @media (max-width: 900px){
+      .grid{ grid-template-columns: 1fr; }
+      .chips{ justify-content: flex-start; }
+    }
+
+    .card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px 18px 14px;
+    }
+
+    .section-title{
+      margin: 0 0 12px;
+      font-size: 14px;
+      color: var(--faint);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .kv{
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 8px 12px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .kv b{ color: var(--text); font-weight: 600; }
+
+    .btnrow{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    @media (prefers-color-scheme: light){
+      .btn{ background: #f2f4ff; }
+    }
+
+    .item{
+      padding: 10px 0;
+      border-top: 1px dashed var(--border);
+    }
+    .item:first-of-type{ border-top: 0; padding-top: 0; }
+
+    .item .head{
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: baseline;
+    }
+    .item .head .role{
+      font-weight: 650;
+      color: var(--text);
+      font-size: 15px;
+    }
+    .item .head .time{
+      color: var(--faint);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .item .meta{
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .bullets{
+      margin: 8px 0 0 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .bullets li{ margin: 4px 0; }
+
+    .footer{
+      margin-top: 18px;
+      color: var(--faint);
+      font-size: 12px;
+      text-align: center;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Haoyang You</h1>
-  <p>Email: <a href="mailto:yebai467@gmail.com">yebai467@gmail.com</a></p>
-  <p>Institutional: <a href="mailto:2022211226@stu.hit.edu.cn">2022211226@stu.hit.edu.cn</a></p>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="name">
+        <h1>Haoyang You</h1>
+        <div class="sub">
+          尤昊阳 · Undergraduate Student (Cybersecurity) · Harbin Institute of Technology (Weihai)
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip">NLP · LLM Evaluation</span>
+        <span class="chip">RAG · Memory</span>
+        <span class="chip">Security</span>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Left: Contact / Quick Facts -->
+      <aside class="card">
+        <h2 class="section-title">Contact</h2>
+        <div class="kv">
+          <span>Email</span>
+          <b><a href="mailto:yebai467@gmail.com">yebai467@gmail.com</a></b>
+
+          <span>Institution</span>
+          <b><a href="mailto:2022211226@stu.hit.edu.cn">2022211226@stu.hit.edu.cn</a></b>
+
+          <span>Homepage</span>
+          <b><!-- 这里填你的 Pages URL -->
+            <a href="#" onclick="return false;">https://&lt;your-github&gt;.github.io/&lt;repo&gt;/</a>
+          </b>
+        </div>
+
+        <div class="btnrow" aria-label="Quick Links">
+          <!-- 你后续可以把 # 换成真实链接 -->
+          <a class="btn" href="#" onclick="return false;">Google Scholar</a>
+          <a class="btn" href="#" onclick="return false;">ORCID</a>
+          <a class="btn" href="#" onclick="return false;">GitHub</a>
+          <!-- 如果你把简历导出成 resume.pdf 放到仓库根目录，可启用这行 -->
+          <!-- <a class="btn" href="./resume.pdf">Download CV (PDF)</a> -->
+        </div>
+
+        <h2 class="section-title" style="margin-top:18px;">Quick Facts</h2>
+        <div class="kv">
+          <span>GPA</span>
+          <b>94.58 / 100</b>
+          <span>Rank</span>
+          <b>1 / 75</b>
+          <span>CET-6</span>
+          <b>524</b>
+          <span>CET-4</span>
+          <b>578</b>
+        </div>
+
+        <div class="footer">Last updated: 2025-12</div>
+      </aside>
+
+      <!-- Right: Main content -->
+      <main>
+        <section class="card">
+          <h2 class="section-title">Education</h2>
+
+          <div class="item">
+            <div class="head">
+              <div class="role">Harbin Institute of Technology (Weihai)</div>
+              <div class="time">2022.09 – Present</div>
+            </div>
+            <div class="meta">Major: Cybersecurity · School/Faculty: Computing</div>
+            <ul class="bullets">
+              <li>GPA: 94.58/100; Rank: 1/75.</li>
+              <li>Selected courses: Data Structures (100), Probability (100), Algebra & Geometry (100), Set Theory & Graph Theory (98), Calculus (98), Cryptography (98), Computer Networks (97), Computer Organization (96).</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="card" style="margin-top:16px;">
+          <h2 class="section-title">Honors & Awards</h2>
+
+          <div class="item">
+            <div class="head">
+              <div class="role">National Scholarship</div>
+              <div class="time">2024.12</div>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="head">
+              <div class="role">Outstanding Student Cadre (Top 0.1%) · HIT</div>
+              <div class="time">2024.12</div>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="head">
+              <div class="role">China Undergraduate Mathematical Contest in Modeling · Provincial 1st Prize</div>
+              <div class="time">2023.11</div>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="head">
+              <div class="role">Chinese Collegiate Computing Competition (Design) · Provincial 2nd Prize</div>
+              <div class="time">2025.05</div>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="head">
+              <div class="role">Network Technology Challenge · East China Regional 3rd Prize</div>
+              <div class="time">2025.07</div>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="head">
+              <div class="role">Lanqiao Cup · Provincial 3rd Prize</div>
+              <div class="time">2024.04</div>
+            </div>
+          </div>
+
+          <!-- 你 docx 里还有多条校级奖学金/荣誉，可继续按上面 item 结构补齐 -->
+        </section>
+
+        <section class="card" style="margin-top:16px;">
+          <h2 class="section-title">Leadership & Service</h2>
+
+          <div class="item">
+            <div class="head">
+              <div class="role">Minister, Learning Department · School of CS (HIT Weihai)</div>
+              <div class="time">2023.07 – 2024.06</div>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="head">
+              <div class="role">Member, Learning Department · School of CS (HIT Weihai)</div>
+              <div class="time">2022.09 – 2023.06</div>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="head">
+              <div class="role">Deputy Team Leader, “Cloud Dream Building” Practice Team</div>
+              <div class="time">2024.06 – 2024.08</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 可选扩展：论文/项目/技能（先留骨架，后面慢慢补） -->
+        <section class="card" style="margin-top:16px;">
+          <h2 class="section-title">Selected Projects (Optional)</h2>
+          <div class="item">
+            <div class="meta">
+              建议后续补 2–4 个项目：每个项目写 3–5 条 bullet（你的贡献、方法、结果/指标、链接）。
+            </div>
+          </div>
+        </section>
+
+        <section class="card" style="margin-top:16px;">
+          <h2 class="section-title">Skills (Optional)</h2>
+          <div class="item">
+            <div class="meta">
+              建议按：Programming / ML&NLP / Tools / Languages 分组列出（避免堆关键词）。
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
 </body>
 </html>
