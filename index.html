@@ -60,6 +60,10 @@
       border-bottom: 1px solid var(--line);
     }
     .wordmark { font-size: 14px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    .nav-actions { display: flex; align-items: center; gap: 22px; }
+    .language-switch { display: inline-flex; gap: 2px; padding: 3px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.45); }
+    .language-switch button { border: 0; border-radius: 999px; padding: 5px 9px; color: var(--ink-soft); background: transparent; cursor: pointer; font: inherit; font-size: 11px; }
+    .language-switch button.active { color: #fff; background: var(--ink); }
     .nav-links { display: flex; gap: 24px; color: var(--ink-soft); font-size: 13px; }
     .nav-links a { position: relative; }
     .nav-links a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -5px; height: 1px; background: var(--accent); transition: right .25s ease; }
@@ -148,13 +152,19 @@
 </head>
 <body>
   <div class="site-shell">
-    <nav class="nav" aria-label="主导航">
+    <nav class="nav" aria-label="Primary navigation">
       <a class="wordmark" href="#top">Haoyang You</a>
-      <div class="nav-links">
-        <a href="#education">Education</a>
-        <a href="#research">Research</a>
-        <a href="#honors">Honors</a>
-        <a href="mailto:yebai467@gmail.com">Contact</a>
+      <div class="nav-actions">
+        <div class="nav-links">
+          <a href="#education" data-i18n="navEducation">Education</a>
+          <a href="#research" data-i18n="navResearch">Research</a>
+          <a href="#honors" data-i18n="navHonors">Honors</a>
+          <a href="mailto:yebai467@gmail.com" data-i18n="navContact">Contact</a>
+        </div>
+        <div class="language-switch" role="group" aria-label="Language switcher">
+          <button type="button" data-lang="zh" class="active">中</button>
+          <button type="button" data-lang="en">EN</button>
+        </div>
       </div>
     </nav>
 
@@ -162,80 +172,113 @@
       <div>
         <p class="eyebrow">Academic homepage · 2026</p>
         <h1>尤昊阳<br /><em>Haoyang You</em></h1>
-        <p class="hero-lead">哈尔滨工业大学计算学部硕士研究生在读，关注大语言模型的记忆、角色扮演与可控生成。</p>
+        <p class="hero-lead" data-i18n="heroLead">哈尔滨工业大学计算学部硕士研究生在读，关注大语言模型的记忆、角色扮演与可控生成。</p>
       </div>
       <div class="hero-note">
-        <strong>现在，我在研究什么？</strong>
-        如何让语言模型真正记住并使用角色知识，在长对话中保持稳定、可信、自然的角色表现。
+        <strong data-i18n="heroQuestion">现在，我在研究什么？</strong>
+        <span data-i18n="heroNote">如何让语言模型真正记住并使用角色知识，在长对话中保持稳定、可信、自然的角色表现。</span>
       </div>
     </header>
 
     <div class="content-grid">
       <aside class="side-card">
-        <p class="side-label">Profile / 个人信息</p>
-        <h2>Researcher<br />in progress.</h2>
+        <p class="side-label" data-i18n="profileLabel">Profile / 个人信息</p>
+        <h2 data-i18n="profileTitle">Researcher<br />in progress.</h2>
         <dl class="contact-list">
-          <div><dt>Current</dt><dd>硕士研究生 · 哈尔滨工业大学</dd></div>
-          <div><dt>Department</dt><dd>计算学部</dd></div>
-          <div><dt>Advisor</dt><dd>王恺</dd></div>
-          <div><dt>Email</dt><dd><a href="mailto:yebai467@gmail.com">yebai467@gmail.com</a></dd></div>
+          <div><dt data-i18n="currentLabel">Current</dt><dd data-i18n="currentValue">硕士研究生 · 哈尔滨工业大学</dd></div>
+          <div><dt data-i18n="departmentLabel">Department</dt><dd data-i18n="departmentValue">计算学部</dd></div>
+          <div><dt data-i18n="advisorLabel">Advisor</dt><dd data-i18n="advisorValue">王恺</dd></div>
+          <div><dt data-i18n="emailLabel">Email</dt><dd><a href="mailto:yebai467@gmail.com">yebai467@gmail.com</a></dd></div>
         </dl>
-        <div class="pill-list" aria-label="研究关键词">
+        <div class="pill-list" aria-label="Research keywords">
           <span class="pill">LLM</span><span class="pill">NLP</span><span class="pill">Role-playing</span><span class="pill">Memory</span><span class="pill">Evaluation</span>
         </div>
         <div class="side-rule"></div>
         <div class="side-links">
-          <a href="https://aclanthology.org/2026.findings-acl.1175/" target="_blank" rel="noreferrer"><span>ACL Anthology</span><span>↗</span></a>
-          <a href="https://doi.org/10.18653/v1/2026.findings-acl.1175" target="_blank" rel="noreferrer"><span>Paper DOI</span><span>↗</span></a>
+          <a href="https://aclanthology.org/2026.findings-acl.1175/" target="_blank" rel="noreferrer"><span data-i18n="aclLink">ACL Anthology</span><span>↗</span></a>
+          <a href="https://doi.org/10.18653/v1/2026.findings-acl.1175" target="_blank" rel="noreferrer"><span data-i18n="doiLink">Paper DOI</span><span>↗</span></a>
           <a href="https://orcid.org/0009-0001-6039-7615" target="_blank" rel="noreferrer"><span>ORCID</span><span>↗</span></a>
         </div>
       </aside>
 
       <main class="main-stack">
         <section class="section-card" id="education">
-          <div class="section-head"><div><p class="section-kicker">01 · Background</p><h2>Education</h2></div><span class="index">学习经历</span></div>
+          <div class="section-head"><div><p class="section-kicker">01 · Background</p><h2 data-i18n="educationTitle">Education</h2></div><span class="index" data-i18n="educationIndex">学习经历</span></div>
           <div class="timeline">
             <article class="timeline-item">
               <div class="timeline-year">2026.09 — now</div>
-              <div class="timeline-body"><h3>哈尔滨工业大学 · 计算学部</h3><p>硕士研究生在读 · 导师：王恺</p><ul><li>研究方向：大语言模型、角色扮演、记忆增强与模型评测。</li></ul></div>
+              <div class="timeline-body"><h3 data-i18n="masterSchool">哈尔滨工业大学 · 计算学部</h3><p data-i18n="masterMeta">硕士研究生在读 · 导师：王恺</p><ul><li data-i18n="masterBullet">研究方向：大语言模型、角色扮演、记忆增强与模型评测。</li></ul></div>
             </article>
             <article class="timeline-item">
               <div class="timeline-year">2022.09 — 2026.06</div>
-              <div class="timeline-body"><h3>哈尔滨工业大学（威海） · 计算机科学与技术学院</h3><p>网络空间安全专业 · 本科</p><ul><li>GPA 94.58 / 100，专业排名 1 / 75。</li><li>核心课程：数据结构、密码学、计算机网络、计算机组成原理等。</li></ul></div>
+              <div class="timeline-body"><h3 data-i18n="bachelorSchool">哈尔滨工业大学（威海） · 计算机科学与技术学院</h3><p data-i18n="bachelorMeta">网络空间安全专业 · 本科</p><ul><li data-i18n="gpaBullet">GPA 94.58 / 100，专业排名 1 / 75。</li><li data-i18n="courseBullet">核心课程：数据结构、密码学、计算机网络、计算机组成原理等。</li></ul></div>
             </article>
           </div>
         </section>
 
         <section class="section-card" id="research">
-          <div class="section-head"><div><p class="section-kicker">02 · Selected work</p><h2>Research</h2></div><span class="index">研究成果</span></div>
+          <div class="section-head"><div><p class="section-kicker">02 · Selected work</p><h2 data-i18n="researchTitle">Research</h2></div><span class="index" data-i18n="researchIndex">研究成果</span></div>
           <article class="paper-card">
             <div class="paper-badge">ACL Findings · 2026</div>
             <h3>Memory-Driven Role-Playing: Evaluation and Enhancement of Persona Knowledge Utilization in LLMs</h3>
             <p class="paper-authors">Kai Wang · <strong>Haoyang You</strong> · Yang Zhang · Zhongjie Wang</p>
-            <p class="paper-abstract">我们提出 Memory-Driven Role-Playing 范式，将角色知识视为模型的内部记忆，要求模型仅依靠对话上下文完成检索与应用。论文进一步提出 MREval、MRPrompt 与双语基准 MRBench，从 Anchoring、Selecting、Bounding、Enacting 四个维度诊断角色扮演能力。实验表明，结构化记忆检索能够显著提升小模型的角色表现。</p>
-            <div class="paper-links"><a class="paper-link" href="https://aclanthology.org/2026.findings-acl.1175/" target="_blank" rel="noreferrer">Read on ACL Anthology ↗</a><a class="paper-link" href="https://doi.org/10.18653/v1/2026.findings-acl.1175" target="_blank" rel="noreferrer">10.18653/v1/2026.findings-acl.1175 ↗</a></div>
+            <p class="paper-abstract" data-i18n="paperAbstract">我们提出 Memory-Driven Role-Playing 范式，将角色知识视为模型的内部记忆，要求模型仅依靠对话上下文完成检索与应用。论文进一步提出 MREval、MRPrompt 与双语基准 MRBench，从 Anchoring、Selecting、Bounding、Enacting 四个维度诊断角色扮演能力。实验表明，结构化记忆检索能够显著提升小模型的角色表现。</p>
+            <div class="paper-links"><a class="paper-link" href="https://aclanthology.org/2026.findings-acl.1175/" target="_blank" rel="noreferrer" data-i18n="readPaper">Read on ACL Anthology ↗</a><a class="paper-link" href="https://doi.org/10.18653/v1/2026.findings-acl.1175" target="_blank" rel="noreferrer">10.18653/v1/2026.findings-acl.1175 ↗</a></div>
           </article>
         </section>
 
         <section class="section-card" id="honors">
-          <div class="section-head"><div><p class="section-kicker">03 · Recognition</p><h2>Honors & Service</h2></div><span class="index">荣誉与经历</span></div>
+          <div class="section-head"><div><p class="section-kicker">03 · Recognition</p><h2 data-i18n="honorsTitle">Honors & Service</h2></div><span class="index" data-i18n="honorsIndex">荣誉与经历</span></div>
           <div class="award-list">
-            <div class="award"><strong>国家奖学金</strong><span>2024.12</span></div>
-            <div class="award"><strong>哈工大优秀学生干部（Top 0.1%）</strong><span>2024.12</span></div>
-            <div class="award"><strong>全国大学生数学建模竞赛 · 省一等奖</strong><span>2023.11</span></div>
-            <div class="award"><strong>中国大学生计算机设计大赛 · 省二等奖</strong><span>2025.05</span></div>
-            <div class="award"><strong>网络技术挑战赛 · 华东赛区三等奖</strong><span>2025.07</span></div>
-            <div class="award"><strong>蓝桥杯 · 省三等奖</strong><span>2024.04</span></div>
+            <div class="award"><strong data-i18n="award1">国家奖学金</strong><span>2024.12</span></div>
+            <div class="award"><strong data-i18n="award2">哈工大优秀学生干部（Top 0.1%）</strong><span>2024.12</span></div>
+            <div class="award"><strong data-i18n="award3">全国大学生数学建模竞赛 · 省一等奖</strong><span>2023.11</span></div>
+            <div class="award"><strong data-i18n="award4">中国大学生计算机设计大赛 · 省二等奖</strong><span>2025.05</span></div>
+            <div class="award"><strong data-i18n="award5">网络技术挑战赛 · 华东赛区三等奖</strong><span>2025.07</span></div>
+            <div class="award"><strong data-i18n="award6">蓝桥杯 · 省三等奖</strong><span>2024.04</span></div>
           </div>
           <div class="timeline" style="margin-top: 28px;">
-            <article class="timeline-item"><div class="timeline-year">2023.07 — 2024.06</div><div class="timeline-body"><h3>哈工大（威海）计算机学院 · 学习部部长</h3><p>组织学习活动与学术交流，协助推进学院学生服务工作。</p></div></article>
-            <article class="timeline-item"><div class="timeline-year">2024.06 — 2024.08</div><div class="timeline-body"><h3>“云梦筑梦”社会实践队 · 副队长</h3><p>参与实践项目策划、团队协作与现场执行。</p></div></article>
+            <article class="timeline-item"><div class="timeline-year">2023.07 — 2024.06</div><div class="timeline-body"><h3 data-i18n="service1Title">哈工大（威海）计算机学院 · 学习部部长</h3><p data-i18n="service1Text">组织学习活动与学术交流，协助推进学院学生服务工作。</p></div></article>
+            <article class="timeline-item"><div class="timeline-year">2024.06 — 2024.08</div><div class="timeline-body"><h3 data-i18n="service2Title">“云梦筑梦”社会实践队 · 副队长</h3><p data-i18n="service2Text">参与实践项目策划、团队协作与现场执行。</p></div></article>
           </div>
         </section>
       </main>
     </div>
 
-    <footer class="footer"><span>© 2026 Haoyang You</span><span>Last updated · 2026.10</span></footer>
+    <footer class="footer"><span>© 2026 Haoyang You</span><span data-i18n="footerUpdated">Last updated · 2026.10</span></footer>
   </div>
+  <script>
+    const translations = {
+      zh: {
+        navEducation: '教育经历', navResearch: '科研成果', navHonors: '荣誉经历', navContact: '联系我',
+        heroLead: '哈尔滨工业大学计算学部硕士研究生在读，关注大语言模型的记忆、角色扮演与可控生成。',
+        heroQuestion: '现在，我在研究什么？', heroNote: '如何让语言模型真正记住并使用角色知识，在长对话中保持稳定、可信、自然的角色表现。',
+        profileLabel: 'Profile / 个人信息', profileTitle: 'Researcher<br />in progress.', currentLabel: 'Current', currentValue: '硕士研究生 · 哈尔滨工业大学', departmentLabel: 'Department', departmentValue: '计算学部', advisorLabel: 'Advisor', advisorValue: '王恺', emailLabel: 'Email', aclLink: 'ACL Anthology', doiLink: 'Paper DOI',
+        educationTitle: 'Education', educationIndex: '学习经历', masterSchool: '哈尔滨工业大学 · 计算学部', masterMeta: '硕士研究生在读 · 导师：王恺', masterBullet: '研究方向：大语言模型、角色扮演、记忆增强与模型评测。', bachelorSchool: '哈尔滨工业大学（威海） · 计算机科学与技术学院', bachelorMeta: '网络空间安全专业 · 本科', gpaBullet: 'GPA 94.58 / 100，专业排名 1 / 75。', courseBullet: '核心课程：数据结构、密码学、计算机网络、计算机组成原理等。',
+        researchTitle: 'Research', researchIndex: '研究成果', paperAbstract: '我们提出 Memory-Driven Role-Playing 范式，将角色知识视为模型的内部记忆，要求模型仅依靠对话上下文完成检索与应用。论文进一步提出 MREval、MRPrompt 与双语基准 MRBench，从 Anchoring、Selecting、Bounding、Enacting 四个维度诊断角色扮演能力。实验表明，结构化记忆检索能够显著提升小模型的角色表现。', readPaper: 'Read on ACL Anthology ↗',
+        honorsTitle: 'Honors & Service', honorsIndex: '荣誉与经历', award1: '国家奖学金', award2: '哈工大优秀学生干部（Top 0.1%）', award3: '全国大学生数学建模竞赛 · 省一等奖', award4: '中国大学生计算机设计大赛 · 省二等奖', award5: '网络技术挑战赛 · 华东赛区三等奖', award6: '蓝桥杯 · 省三等奖', service1Title: '哈工大（威海）计算机学院 · 学习部部长', service1Text: '组织学习活动与学术交流，协助推进学院学生服务工作。', service2Title: '“云梦筑梦”社会实践队 · 副队长', service2Text: '参与实践项目策划、团队协作与现场执行。', footerUpdated: '最后更新 · 2026.10'
+      },
+      en: {
+        navEducation: 'Education', navResearch: 'Research', navHonors: 'Honors', navContact: 'Contact',
+        heroLead: 'Master’s student in the School of Computing at Harbin Institute of Technology, working on memory, role-playing, and controllable generation in large language models.',
+        heroQuestion: 'What am I working on?', heroNote: 'How can language models truly remember and use persona knowledge while staying consistent, credible, and natural across long conversations?',
+        profileLabel: 'Profile / 个人信息', profileTitle: 'Researcher<br />in progress.', currentLabel: 'Current', currentValue: 'M.S. student · Harbin Institute of Technology', departmentLabel: 'Department', departmentValue: 'School of Computing', advisorLabel: 'Advisor', advisorValue: 'Kai Wang', emailLabel: 'Email', aclLink: 'ACL Anthology', doiLink: 'Paper DOI',
+        educationTitle: 'Education', educationIndex: '学术背景', masterSchool: 'Harbin Institute of Technology · School of Computing', masterMeta: 'M.S. student · Advisor: Kai Wang', masterBullet: 'Research interests: large language models, role-playing, memory augmentation, and evaluation.', bachelorSchool: 'Harbin Institute of Technology (Weihai) · School of Computer Science and Technology', bachelorMeta: 'B.S. in Cyberspace Security', gpaBullet: 'GPA 94.58 / 100 · Ranked 1st out of 75 students.', courseBullet: 'Selected coursework: Data Structures, Cryptography, Computer Networks, and Computer Organization.',
+        researchTitle: 'Research', researchIndex: 'Selected work', paperAbstract: 'We introduce Memory-Driven Role-Playing, a paradigm that treats persona knowledge as an internal memory store and requires models to retrieve and apply it from dialogue context alone. We contribute MREval, MRPrompt, and the bilingual MRBench benchmark, diagnosing four abilities: Anchoring, Selecting, Bounding, and Enacting. Experiments show that structured memory retrieval substantially improves role-playing performance in smaller models.', readPaper: 'Read on ACL Anthology ↗',
+        honorsTitle: 'Honors & Service', honorsIndex: 'Recognition', award1: 'National Scholarship', award2: 'Outstanding Student Cadre at HIT (Top 0.1%)', award3: 'China Undergraduate Mathematical Contest in Modeling · Provincial First Prize', award4: 'Chinese Collegiate Computing Competition · Provincial Second Prize', award5: 'Network Technology Challenge · East China Regional Third Prize', award6: 'Lanqiao Cup · Provincial Third Prize', service1Title: 'Learning Department, School of Computer Science (HIT Weihai) · Minister', service1Text: 'Organized learning activities and academic exchanges for the school community.', service2Title: '“Cloud Dream Building” Practice Team · Deputy Team Leader', service2Text: 'Contributed to project planning, team coordination, and field execution.', footerUpdated: 'Last updated · 2026.10'
+      }
+    };
+    function setLanguage(lang) {
+      const dict = translations[lang];
+      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+      document.title = lang === 'zh' ? '尤昊阳 | Academic Homepage' : 'Haoyang You | Academic Homepage';
+      document.querySelector('meta[name="description"]').content = lang === 'zh' ? '尤昊阳，哈尔滨工业大学计算学部硕士研究生，研究方向为大语言模型、角色扮演与记忆增强。' : 'Haoyang You, M.S. student at Harbin Institute of Technology, researching memory-driven role-playing and large language models.';
+      document.querySelectorAll('[data-i18n]').forEach((node) => { node.innerHTML = dict[node.dataset.i18n]; });
+      document.querySelectorAll('[data-lang]').forEach((button) => button.classList.toggle('active', button.dataset.lang === lang));
+      localStorage.setItem('preferred-language', lang);
+    }
+    document.querySelectorAll('[data-lang]').forEach((button) => button.addEventListener('click', () => setLanguage(button.dataset.lang)));
+    setLanguage(localStorage.getItem('preferred-language') || 'zh');
+  </script>
 </body>
 </html>
